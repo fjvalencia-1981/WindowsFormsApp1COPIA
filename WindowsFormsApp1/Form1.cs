@@ -2231,8 +2231,9 @@ namespace WindowsFormsApp1
                 System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12; // para error No se puede crear un canal seguro SSL/TLS
                 //-----------------------------------------------------------------------------------------------------------------------------------------------
 
-                string resultado = "";
-                string SqlInsert = "";
+                //PRUEBA DE UN CAMBIO EN GITHUB -----------------------------------
+                //string resultado = "";
+                //string SqlInsert = "";
                 string NombreArchivo = "";
                 string SqlInsert2 = "";
                 string usuario = "INTEGRADOR_API";
