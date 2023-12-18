@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="urn:servicioWebWSDL" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="urn:servicioWebWSDL" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="urn:servicioWebWSDL">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/" />
+      <xsd:complexType name="cliente">
+        <xsd:all>
+          <xsd:element name="cardcode" type="xsd:string" />
+          <xsd:element name="nombre" type="xsd:string" />
+          <xsd:element name="telefono" type="xsd:string" />
+          <xsd:element name="email" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="general">
+        <xsd:all>
+          <xsd:element name="numero" type="xsd:string" />
+          <xsd:element name="tipoPago" type="xsd:string" />
+          <xsd:element name="medioPago" type="xsd:string" />
+          <xsd:element name="metodoEnvio" type="xsd:string" />
+          <xsd:element name="montoEnvio" type="xsd:string" />
+          <xsd:element name="comentarioCliente" type="xsd:string" />
+          <xsd:element name="enviaDireccionTercero" type="xsd:string" />
+          <xsd:element name="direccionTercero" type="xsd:string" />
+          <xsd:element name="monto" type="xsd:string" />
+          <xsd:element name="descuento" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="direccionDespacho">
+        <xsd:all>
+          <xsd:element name="region" type="xsd:string" />
+          <xsd:element name="direccion" type="xsd:string" />
+          <xsd:element name="sector" type="xsd:string" />
+          <xsd:element name="telefono" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="direccionPedido">
+        <xsd:all>
+          <xsd:element name="region" type="xsd:string" />
+          <xsd:element name="direccion" type="xsd:string" />
+          <xsd:element name="sector" type="xsd:string" />
+          <xsd:element name="telefono" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="listado_articulos">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="SOAP-ENC:Array">
+            <xsd:attribute wsdl:arrayType="tns:articulo[]" ref="SOAP-ENC:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="articulo">
+        <xsd:all>
+          <xsd:element name="sku" type="xsd:string" />
+          <xsd:element name="precio" type="xsd:string" />
+          <xsd:element name="cantidad" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="orden">
+        <xsd:all>
+          <xsd:element name="cliente" type="tns:cliente" />
+          <xsd:element name="general" type="tns:general" />
+          <xsd:element name="direccionDespacho" type="tns:direccionDespacho" />
+          <xsd:element name="direccionPedido" type="tns:direccionPedido" />
+          <xsd:element name="listado_articulos" type="tns:listado_articulos" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="listaOrdenes">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="SOAP-ENC:Array">
+            <xsd:attribute wsdl:arrayType="tns:orden[]" ref="SOAP-ENC:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ordenesRequest">
+    <wsdl:part name="token" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="ordenesResponse">
+    <wsdl:part name="codResult" type="xsd:string" />
+    <wsdl:part name="listado_ordenes" type="tns:listaOrdenes" />
+  </wsdl:message>
+  <wsdl:portType name="ServicioWebIntegracionEnexumPortType">
+    <wsdl:operation name="ordenes">
+      <documentation>Listado de ordenes</documentation>
+      <wsdl:input message="tns:ordenesRequest" />
+      <wsdl:output message="tns:ordenesResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServicioWebIntegracionEnexumBinding" type="tns:ServicioWebIntegracionEnexumPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="ordenes">
+      <soap:operation soapAction="urn:servicioWebWSDL#ordenes" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:servicioWebWSDL" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:servicioWebWSDL" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServicioWebIntegracionEnexum">
+    <wsdl:port name="ServicioWebIntegracionEnexumPort" binding="tns:ServicioWebIntegracionEnexumBinding">
+      <soap:address location="https://hoffens.com:443/integracion/ws/hoffensServicio.php" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

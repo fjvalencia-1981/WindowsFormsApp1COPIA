@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:wsoap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="urn:sap-com:document:sap:rfc:functions" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="urn:sap-com:document:sap:rfc:functions" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>
+    <sidl:sidl xmlns:sidl="http://www.sap.com/2007/03/sidl" />
+  </wsdl:documentation>
+  <wsp:UsingPolicy wsdl:required="true" />
+  <wsp:Policy wsu:Id="BN_BN_binding">
+    <saptrnbnd:OptimizedXMLTransfer uri="http://xml.sap.com/2006/11/esi/esp/binxml" xmlns:saptrnbnd="http://www.sap.com/webas/710/soap/features/transportbinding/" wsp:Optional="true" />
+    <saptrnbnd:OptimizedMimeSerialization xmlns:saptrnbnd="http://schemas.xmlsoap.org/ws/2004/09/policy/optimizedmimeserialization" wsp:Optional="true" />
+    <wsp:ExactlyOne xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702" xmlns:sapsp="http://www.sap.com/webas/630/soap/features/security/policy" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:wst="http://docs.oasis-open.org/ws-sx/ws-trust/200512" xmlns:wsu="http://schemas.xmlsoap.org/ws/2002/07/utility" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken>
+                  <wsp:Policy>
+                    <sp:HttpBasicAuthentication />
+                  </wsp:Policy>
+                </sp:HttpsToken>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic128Rsa15 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+      </wsp:All>
+    </wsp:ExactlyOne>
+    <wsaw:UsingAddressing xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" wsp:Optional="true" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="BN_BN_binding_SOAP12">
+    <saptrnbnd:OptimizedXMLTransfer uri="http://xml.sap.com/2006/11/esi/esp/binxml" xmlns:saptrnbnd="http://www.sap.com/webas/710/soap/features/transportbinding/" wsp:Optional="true" />
+    <saptrnbnd:OptimizedMimeSerialization xmlns:saptrnbnd="http://schemas.xmlsoap.org/ws/2004/09/policy/optimizedmimeserialization" wsp:Optional="true" />
+    <wsp:ExactlyOne xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702" xmlns:sapsp="http://www.sap.com/webas/630/soap/features/security/policy" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:wst="http://docs.oasis-open.org/ws-sx/ws-trust/200512" xmlns:wsu="http://schemas.xmlsoap.org/ws/2002/07/utility" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken>
+                  <wsp:Policy>
+                    <sp:HttpBasicAuthentication />
+                  </wsp:Policy>
+                </sp:HttpsToken>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic128Rsa15 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+      </wsp:All>
+    </wsp:ExactlyOne>
+    <wsaw:UsingAddressing xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" wsp:Optional="true" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="IF_IF_ZWSSD_OBTCLI">
+    <sapsession:Session xmlns:sapsession="http://www.sap.com/webas/630/soap/features/session/">
+      <sapsession:enableSession>false</sapsession:enableSession>
+    </sapsession:Session>
+    <sapcentraladmin:CentralAdministration xmlns:sapcentraladmin="http://www.sap.com/webas/700/soap/features/CentralAdministration/" wsp:Optional="true">
+      <sapcentraladmin:BusinessApplicationID>6091F1A0E617D474E1008001C0A8461E</sapcentraladmin:BusinessApplicationID>
+    </sapcentraladmin:CentralAdministration>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_ZSDF_OBTCLI">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema attributeFormDefault="qualified" targetNamespace="urn:sap-com:document:sap:rfc:functions">
+      <xsd:simpleType name="char1">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char10">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="10" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char100">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="100" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char12">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="12" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char15">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="15" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char2">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char20">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="20" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char25">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="25" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char35">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="35" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char50">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="50" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char500">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="500" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="ZSDS_OBTCLI">
+        <xsd:sequence>
+          <xsd:element name="COUNT" type="xsd:int" />
+          <xsd:element name="RESULTADO" type="tns:char10" />
+          <xsd:element name="RESULTADO_DES" type="tns:char500" />
+          <xsd:element name="RESULTADO_CODIGO" type="xsd:int" />
+          <xsd:element name="LIMIT" type="xsd:int" />
+          <xsd:element name="ROWSET" type="xsd:int" />
+          <xsd:element name="ITEMS" type="tns:ZSDTT_OBTCLI_ITEMS" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZSDS_OBTCLI_ITEMS">
+        <xsd:sequence>
+          <xsd:element name="ID" type="xsd:int" />
+          <xsd:element name="ORIGEN" type="tns:char20" />
+          <xsd:element name="EMPID" type="xsd:int" />
+          <xsd:element name="RUTCLIENTE" type="tns:char12" />
+          <xsd:element name="NOMBRES" type="tns:char12" />
+          <xsd:element name="APELLIDOS" type="tns:char50" />
+          <xsd:element name="NOMBREFANTASIA" type="tns:char50" />
+          <xsd:element name="RAZONSOCIAL" type="tns:char100" />
+          <xsd:element name="GIRO" type="xsd:int" />
+          <xsd:element name="TIPOCLIENTE" type="tns:char2" />
+          <xsd:element name="SUCURSAL" type="xsd:int" />
+          <xsd:element name="NOMBRESUCURSAL" type="tns:char50" />
+          <xsd:element name="DIRECCION" type="tns:char100" />
+          <xsd:element name="TELEFONO" type="tns:char20" />
+          <xsd:element name="EMAIL" type="tns:char50" />
+          <xsd:element name="COMUNA" type="tns:char25" />
+          <xsd:element name="CIUID" type="tns:char35" />
+          <xsd:element name="REGION" type="xsd:int" />
+          <xsd:element name="CONTACTO" type="tns:char100" />
+          <xsd:element name="TELEFONOCONTACTO" type="tns:char20" />
+          <xsd:element name="TIPOREFERENCIA" type="tns:char50" />
+          <xsd:element name="NUMEROREFERENCIA" type="tns:char50" />
+          <xsd:element name="CODIGOEXT" type="tns:char20" />
+          <xsd:element name="CODIGOLISTA" type="tns:char20" />
+          <xsd:element name="LINEACREDITO" type="tns:char20" />
+          <xsd:element name="FORMAPAGO" type="tns:char20" />
+          <xsd:element name="BANCO" type="xsd:int" />
+          <xsd:element name="NROCUENTA" type="tns:char20" />
+          <xsd:element name="VENDEDOR" type="tns:char15" />
+          <xsd:element name="GEOREFERENCIA" type="tns:char100" />
+          <xsd:element name="INDBLOQUEO" type="tns:char1" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZSDTT_OBTCLI_ITEMS">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZSDS_OBTCLI_ITEMS" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ZSDF_OBTCLI">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="P_FECHAULTIMADESCARGA" type="tns:char15" />
+            <xsd:element minOccurs="0" name="P_LIMIT" type="xsd:int" />
+            <xsd:element minOccurs="0" name="P_ROWSET" type="xsd:int" />
+            <xsd:element name="P_TIPODESCARGA" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZSDF_OBTCLIResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="WE_CUSTOMERS" type="tns:ZSDS_OBTCLI" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ZSDF_OBTCLI">
+    <wsdl:part name="parameters" element="tns:ZSDF_OBTCLI" />
+  </wsdl:message>
+  <wsdl:message name="ZSDF_OBTCLIResponse">
+    <wsdl:part name="parameter" element="tns:ZSDF_OBTCLIResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ZWSSD_OBTCLI">
+    <wsp:Policy>
+      <wsp:PolicyReference URI="#IF_IF_ZWSSD_OBTCLI" />
+    </wsp:Policy>
+    <wsdl:operation name="ZSDF_OBTCLI">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_ZSDF_OBTCLI" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ZSDF_OBTCLI" />
+      <wsdl:output message="tns:ZSDF_OBTCLIResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="binding" type="tns:ZWSSD_OBTCLI">
+    <wsp:Policy>
+      <wsp:PolicyReference URI="#BN_BN_binding" />
+    </wsp:Policy>
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ZSDF_OBTCLI">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="binding_SOAP12" type="tns:ZWSSD_OBTCLI">
+    <wsp:Policy>
+      <wsp:PolicyReference URI="#BN_BN_binding_SOAP12" />
+    </wsp:Policy>
+    <wsoap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ZSDF_OBTCLI">
+      <wsoap12:operation soapAction="" style="document" />
+      <wsdl:input>
+        <wsoap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsoap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="service">
+    <wsdl:port name="binding" binding="tns:binding">
+      <soap:address location="http://sapqasp9.ayf.local:8000/sap/bc/srt/scs/sap/zwssd_obtcli?sap-client=310" />
+    </wsdl:port>
+    <wsdl:port name="binding_SOAP12" binding="tns:binding_SOAP12">
+      <wsoap12:address location="http://sapqasp9.ayf.local:8000/sap/bc/srt/scs/sap/zwssd_obtcli?sap-client=310" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

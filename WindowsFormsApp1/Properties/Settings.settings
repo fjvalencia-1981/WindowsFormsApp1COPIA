@@ -1,0 +1,27 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="WindowsFormsApp1.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="WindowsFormsApp1_WsHoffensV2_ServicioWebIntegracionEnexum" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://hoffens.com:443/integracion/ws/hoffensServicio.php</Value>
+    </Setting>
+    <Setting Name="WindowsFormsApp1_local_ayf_sapqasp9_service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://sapqasp9.ayf.local:8000/sap/bc/srt/scs/sap/zwsmm_obtener_productos?sap-client=310</Value>
+    </Setting>
+    <Setting Name="WindowsFormsApp1_ZWSMM_OBTENER_DESC_DEST_service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://sapqasp9.ayf.local:8000/sap/bc/srt/scs/sap/zwsmm_obtener_desc_dest?sap-client=310</Value>
+    </Setting>
+    <Setting Name="WindowsFormsApp1_ZWSMM_OBTENER_CLIENTES_service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://sapqasp9.ayf.local:8000/sap/bc/srt/scs/sap/zwsmm_obtener_clientes?sap-client=310</Value>
+    </Setting>
+    <Setting Name="WindowsFormsApp1_CLIENTES_service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://sapqasp9.ayf.local:8000/sap/bc/srt/scs/sap/zwssd_obtcli?sap-client=310</Value>
+    </Setting>
+    <Setting Name="WindowsFormsApp1_ZWSSD_GENERAR_PEDIDO_service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://sapqasp9.ayf.local:8000/sap/bc/srt/scs/sap/zwssd_generar_pedido?sap-client=310</Value>
+    </Setting>
+    <Setting Name="WindowsFormsApp1_CREA_PEDIDO_ZMMF_DO_VA01" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://alifrutcpiprd.it-cpi019-rt.cfapps.us10-002.hana.ondemand.com/cxf/QAS/GetPoint/CreacionPedidoVentas</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
